@@ -1,0 +1,17 @@
+name: StumpedTools
+version: 0.0.1
+description: Create special trees allow players to warp
+main: com.dreamless.treewarp.TreeWarp
+api-version: 1.14
+authors: [DreamlessMemory/MemoryReborn]
+prefix: TreeWarp
+depend: [LaithornsGrace]
+commands:
+  TreeTool:
+    description: Command for Administration
+    aliases: [treetool, trtool]
+permissions:
+  treetool.admin:
+    description: All permissions related to setup of TreeWarp
+  treetool.user:
+    description: Allows for the creation of leaves and use of warps
