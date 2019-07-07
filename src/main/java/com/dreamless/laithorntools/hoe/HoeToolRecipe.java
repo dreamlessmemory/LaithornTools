@@ -1,124 +1,120 @@
 package com.dreamless.laithorntools.hoe;
 
-import org.bukkit.Bukkit;
+import java.util.HashMap;
+
 import org.bukkit.Material;
-import org.bukkit.NamespacedKey;
+import org.bukkit.configuration.file.FileConfiguration;
 import org.bukkit.inventory.ItemStack;
-import org.bukkit.inventory.ShapedRecipe;
+import org.bukkit.inventory.meta.ItemMeta;
+
+import com.dreamless.laithorn.LaithornUtils;
+import com.dreamless.laithorn.api.Fragment;
+import com.dreamless.laithorn.api.LaithornRegister;
+import com.dreamless.laithorn.api.RecipeType;
 import com.dreamless.laithorntools.LaithornTools;
+import com.dreamless.nbtapi.NBTCompound;
+import com.dreamless.nbtapi.NBTItem;
+import com.dreamless.laithorntools.LanguageReader;
 
 public class HoeToolRecipe {
 
-	public static final String WOODEN_HOE_REPAIR_STRING = "wooden_hoe_repair";
-	public static final String WOODEN_HOE_CREATE_STRING = "wooden_hoe_create";
-	public static final String STONE_HOE_REPAIR_STRING = "stone_hoe_repair";
-	public static final String STONE_HOE_CREATE_STRING = "stone_hoe_create";
-	public static final String IRON_HOE_REPAIR_STRING = "iron_hoe_repair";
-	public static final String IRON_HOE_CREATE_STRING = "iron_hoe_create";
-	public static final String GOLDEN_HOE_REPAIR_STRING = "gold_hoe_repair";
-	public static final String GOLDEN_HOE_CREATE_STRING = "gold_hoe_create";
-	public static final String DIAMOND_HOE_REPAIR_STRING = "diamond_hoe_repair";
-	public static final String DIAMOND_HOE_CREATE_STRING = "diamond_hoe_create";
+	protected static HashMap<Material, Integer> toolUseCostMap = new HashMap<Material, Integer>();
+	protected static HashMap<Material, Integer> toolUseExpMap = new HashMap<Material, Integer>(); 
+	
+	public static void registerRecipes(FileConfiguration currentConfig) {
 
-	public static void registerRecipes() {
-		Bukkit.addRecipe(hoeRecipeWood());
-		Bukkit.addRecipe(hoeRecipeStone());
-		Bukkit.addRecipe(hoeRecipeIron());
-		Bukkit.addRecipe(hoeRecipeGold());
-		Bukkit.addRecipe(hoeRecipeDiamond());
-	}
+		/**
+		 * Crafting
+		 */
 
-	private static ShapedRecipe hoeRecipeWood() {
-		NamespacedKey key = new NamespacedKey(LaithornTools.tools, "magicked_hoe_wood");
+		// Wood
+		LaithornRegister.registerItemCrafting(itemFactory(Material.WOODEN_HOE), Material.WOODEN_HOE,
+				currentConfig.getInt("WOODEN_HOE_create_level", 0), currentConfig.getInt("WOODEN_HOE_create_exp", 10),
+				RecipeType.CENTERED, null, "magicked_wooden_hoe", LaithornTools.tools);
 
-		ShapedRecipe recipe = new ShapedRecipe(key, new ItemStack(Material.WOODEN_HOE));
+		// Stone
+		LaithornRegister.registerItemCrafting(itemFactory(Material.STONE_HOE), Material.STONE_HOE,
+				currentConfig.getInt("STONE_HOE_create_level", 5), currentConfig.getInt("STONE_HOE_create_exp", 20),
+				RecipeType.CENTERED, null, "magicked_stone_hoe", LaithornTools.tools);
 
-		recipe.shape("EEE", "ESE", "EEE");
-		recipe.setIngredient('E', Material.FLINT);
-		recipe.setIngredient('S', Material.WOODEN_HOE);
+		// Wood
+		LaithornRegister.registerItemCrafting(itemFactory(Material.IRON_HOE), Material.IRON_HOE,
+				currentConfig.getInt("IRON_HOE_create_level", 10), currentConfig.getInt("IRON_HOE_create_exp", 40),
+				RecipeType.CENTERED, null, "magicked_iron_hoe", LaithornTools.tools);
 
-		return recipe;
-	}
+		// Wood
+		LaithornRegister.registerItemCrafting(itemFactory(Material.GOLDEN_HOE), Material.GOLDEN_HOE,
+				currentConfig.getInt("GOLDEN_HOE_create_level", 15), currentConfig.getInt("GOLDEN_HOE_create_exp", 80),
+				RecipeType.CENTERED, null, "magicked_golden_hoe", LaithornTools.tools);
 
-	private static ShapedRecipe hoeRecipeStone() {
-		NamespacedKey key = new NamespacedKey(LaithornTools.tools, "magicked_hoe_stone");
+		// Wood
+		LaithornRegister.registerItemCrafting(itemFactory(Material.DIAMOND_HOE), Material.DIAMOND_HOE,
+				currentConfig.getInt("DIAMOND_HOE_create_level", 20),
+				currentConfig.getInt("DIAMOND_HOE_create_exp", 160), RecipeType.CENTERED, null, "magicked_diamond_hoe",
+				LaithornTools.tools);
 
-		ShapedRecipe recipe = new ShapedRecipe(key, new ItemStack(Material.STONE_HOE));
+		/**
+		 * Repairing
+		 */
 
-		recipe.shape("EEE", "ESE", "EEE");
-		recipe.setIngredient('E', Material.FLINT);
-		recipe.setIngredient('S', Material.STONE_HOE);
+		// Wood
+		LaithornRegister.registerItemRepair(Material.WOODEN_HOE, currentConfig.getInt("WOODEN_HOE_create_level", 0),
+				currentConfig.getInt("WOODEN_HOE_repair_exp", 3), currentConfig.getInt("WOODEN_HOE_repair_rate", 20), true, null);
 
-		return recipe;
-	}
+		// Stone
+		LaithornRegister.registerItemRepair(Material.STONE_HOE, currentConfig.getInt("STONE_HOE_create_level", 5),
+				currentConfig.getInt("STONE_HOE_repair_exp", 3), currentConfig.getInt("STONE_HOE_repair_rate", 20), true, null);
 
-	private static ShapedRecipe hoeRecipeIron() {
-		NamespacedKey key = new NamespacedKey(LaithornTools.tools, "magicked_hoe_iron");
-
-		ShapedRecipe recipe = new ShapedRecipe(key, new ItemStack(Material.IRON_HOE));
-
-		recipe.shape("EEE", "ESE", "EEE");
-		recipe.setIngredient('E', Material.FLINT);
-		recipe.setIngredient('S', Material.IRON_HOE);
-
-		return recipe;
-	}
-
-	private static ShapedRecipe hoeRecipeGold() {
-		NamespacedKey key = new NamespacedKey(LaithornTools.tools, "magicked_hoe_golden");
-
-		ShapedRecipe recipe = new ShapedRecipe(key, new ItemStack(Material.GOLDEN_HOE));
-
-		recipe.shape("EEE", "ESE", "EEE");
-		recipe.setIngredient('E', Material.FLINT);
-		recipe.setIngredient('S', Material.GOLDEN_HOE);
-
-		return recipe;
-	}
-
-	private static ShapedRecipe hoeRecipeDiamond() {
-		NamespacedKey key = new NamespacedKey(LaithornTools.tools, "magicked_hoe_wood");
-
-		ShapedRecipe recipe = new ShapedRecipe(key, new ItemStack(Material.DIAMOND_HOE));
-
-		recipe.shape("EEE", "ESE", "EEE");
-		recipe.setIngredient('E', Material.FLINT);
-		recipe.setIngredient('S', Material.DIAMOND_HOE);
-
-		return recipe;
-	}
-
-	public static String getRepairString(ItemStack item) {
-		switch (item.getType()) {
-		case WOODEN_HOE:
-			return WOODEN_HOE_REPAIR_STRING;
-		case STONE_HOE:
-			return STONE_HOE_REPAIR_STRING;
-		case IRON_HOE:
-			return IRON_HOE_REPAIR_STRING;
-		case GOLDEN_HOE:
-			return GOLDEN_HOE_REPAIR_STRING;
-		case DIAMOND_HOE:
-			return DIAMOND_HOE_REPAIR_STRING;
-		default:
-			return null;
-		}
+		// Iron
+		LaithornRegister.registerItemRepair(Material.IRON_HOE, currentConfig.getInt("IRON_HOE_create_level", 10),
+				currentConfig.getInt("IRON_HOE_repair_exp", 3), currentConfig.getInt("IRON_HOE_repair_rate", 20), true, null);
+		
+		// Gold
+		LaithornRegister.registerItemRepair(Material.GOLDEN_HOE, currentConfig.getInt("GOLDEN_HOE_create_level", 15),
+				currentConfig.getInt("GOLDEN_HOE_repair_exp", 7), currentConfig.getInt("GOLDEN_HOE_repair_rate", 20), true, null);
+		
+		// Diamond
+		LaithornRegister.registerItemRepair(Material.DIAMOND_HOE, currentConfig.getInt("DIAMOND_HOE_create_level", 20),
+				currentConfig.getInt("DIAMOND_HOE_repair_exp", 3), currentConfig.getInt("IRON_HOE_repair_rate", 20), true, null);
 	}
 	
-	public static String getCreateString(ItemStack item) {
-		switch (item.getType()) {
-		case WOODEN_HOE:
-			return WOODEN_HOE_CREATE_STRING;
-		case STONE_HOE:
-			return STONE_HOE_CREATE_STRING;
-		case IRON_HOE:
-			return IRON_HOE_CREATE_STRING;
-		case GOLDEN_HOE:
-			return GOLDEN_HOE_CREATE_STRING;
-		case DIAMOND_HOE:
-			return DIAMOND_HOE_CREATE_STRING;
-		default:
-			return null;
-		}
+	public static void setUseCostAndExpGain(FileConfiguration currentConfig) {
+		/**
+		 * Use Cost
+		 */
+		
+		toolUseCostMap.put(Material.WOODEN_HOE, currentConfig.getInt("WOODEN_HOE_cost", 0));
+		toolUseCostMap.put(Material.STONE_HOE, currentConfig.getInt("STONE_HOE_cost", 1));
+		toolUseCostMap.put(Material.IRON_HOE, currentConfig.getInt("IRON_HOE_cost", 0));
+		toolUseCostMap.put(Material.GOLDEN_HOE, currentConfig.getInt("GOLDEN_HOE_cost", 0));
+		toolUseCostMap.put(Material.DIAMOND_HOE, currentConfig.getInt("DIAMOND_HOE_cost", 9));
+		
+		/**
+		 * Exp Gain
+		 */
+		
+		toolUseExpMap.put(Material.WOODEN_HOE, currentConfig.getInt("WOODEN_HOE_attunement_exp", 5));
+		toolUseExpMap.put(Material.STONE_HOE, currentConfig.getInt("STONE_HOE_attunement_exp", 5));
+		toolUseExpMap.put(Material.IRON_HOE, currentConfig.getInt("IRON_HOE_attunement_exp", 5));
+		toolUseExpMap.put(Material.GOLDEN_HOE, currentConfig.getInt("GOLDEN_HOE_attunement_exp", 15));
+		toolUseExpMap.put(Material.DIAMOND_HOE, currentConfig.getInt("GOLDEN_HOE_attunement_exp", 5));
+	}
+
+	private static ItemStack itemFactory(Material material) {
+		ItemStack item = new ItemStack(material);
+		ItemMeta itemMeta = item.getItemMeta();
+
+		// ItemMeta
+		itemMeta.setDisplayName(LanguageReader.getText(material.name() + "_Name"));
+		itemMeta.setLore(LaithornUtils.wrapText(LanguageReader.getText(material.name() + "_Text")));
+		item.setItemMeta(itemMeta);
+
+		// NBT
+		NBTItem nbti = new NBTItem(item);
+		NBTCompound laithorn = nbti.addCompound(Fragment.getTopLevelTag());
+		laithorn.setString("module", "LaithornTools");
+		item = nbti.getItem();
+
+		return item;
 	}
 }

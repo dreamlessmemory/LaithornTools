@@ -25,7 +25,7 @@ public class PlayerMessager {
 
 	public static void debugLog(String msg) {
 		if (LaithornTools.debug) {
-			msg(Bukkit.getConsoleSender(), "&2[Debug] &f" + msg);
+			msg(Bukkit.getConsoleSender(), "&2[LaithornTools][Debug] &f" + msg);
 		}
 	}
 
