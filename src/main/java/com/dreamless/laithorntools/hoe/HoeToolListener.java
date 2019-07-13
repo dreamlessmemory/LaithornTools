@@ -96,15 +96,14 @@ public class HoeToolListener implements Listener {
 	}
 	
 	private boolean isReadyCrop(Block block) {
-		Ageable ageable = (Ageable) block.getBlockData();
 		switch (block.getType()) {
 		case WHEAT:
 		case POTATOES:
 		case CARROTS:
-			return ageable.getAge() == 7;
+			return ((Ageable)block.getBlockData()).getAge() == 7;
 		case BEETROOTS:
 		case NETHER_WART:
-			return ageable.getAge() == 3;
+			return ((Ageable)block.getBlockData()).getAge() == 3;
 		default:
 			return false;
 		}
