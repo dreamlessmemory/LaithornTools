@@ -26,8 +26,8 @@ import com.dreamless.laithorn.api.Fragment;
 import com.dreamless.laithorn.events.PlayerExperienceGainEvent;
 import com.dreamless.laithorntools.LaithornTools;
 import com.dreamless.laithorn.events.PlayerExperienceVariables.GainType;
-import com.dreamless.nbtapi.NBTCompound;
-import com.dreamless.nbtapi.NBTItem;
+import de.tr7zw.changeme.nbtapi.NBTCompound;
+import de.tr7zw.changeme.nbtapi.NBTItem;
 
 public class HoeToolListener implements Listener {
 
@@ -95,6 +95,36 @@ public class HoeToolListener implements Listener {
 		}
 	}
 	
+	private int seedConsumption(Material toolType) {
+		switch (toolType) {
+		case WOODEN_HOE:
+		case GOLDEN_HOE:
+		case DIAMOND_HOE:
+			return 1;
+		case STONE_HOE:
+			return 0;
+		case IRON_HOE:
+			return -3;
+		default:
+			return 1;
+		}
+	}
+	
+	private int bonusMaterial(Material toolType) {
+		switch (toolType) {
+		case WOODEN_HOE:
+		case DIAMOND_HOE:
+		case STONE_HOE:
+			return 2;
+		case IRON_HOE:
+			return 0;
+		case GOLDEN_HOE:
+			return 5;
+		default:
+			return 0;
+		}
+	}
+	
 	private boolean isReadyCrop(Block block) {
 		switch (block.getType()) {
 		case WHEAT:
@@ -114,11 +144,9 @@ public class HoeToolListener implements Listener {
 		for (ItemStack item : drops) {
 			int seedAmount = item.getAmount();
 			if (item.getType() == seedMaterial) {
-				item.setAmount(Math.max(0, seedAmount - (toolType == Material.STONE_HOE ? 0 : 1)));
+				item.setAmount(Math.max(0, seedAmount - seedConsumption(toolType)));
 			} else {
-				if (toolType == Material.GOLDEN_HOE) {
-					item.setAmount(seedAmount + 2);
-				}
+				item.setAmount(seedAmount + bonusMaterial(toolType));
 			}
 		}
 		return drops;
@@ -140,8 +168,6 @@ public class HoeToolListener implements Listener {
 			return null;
 		}
 	}
-
-	
 
 	private class RegrowthRunnable extends BukkitRunnable {
 

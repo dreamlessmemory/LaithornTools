@@ -12,8 +12,8 @@ import com.dreamless.laithorn.api.Fragment;
 import com.dreamless.laithorn.api.LaithornRegister;
 import com.dreamless.laithorn.api.RecipeType;
 import com.dreamless.laithorntools.LaithornTools;
-import com.dreamless.nbtapi.NBTCompound;
-import com.dreamless.nbtapi.NBTItem;
+import de.tr7zw.changeme.nbtapi.NBTCompound;
+import de.tr7zw.changeme.nbtapi.NBTItem;
 import com.dreamless.laithorntools.LanguageReader;
 
 public class HoeToolRecipe {

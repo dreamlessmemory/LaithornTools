@@ -8,7 +8,6 @@
 	<name>LaithornTools</name>
 	<description>Craftable and Repairable Tools as part of the Laithorn's Grace Plugin Set</description>
 	<build>
-		<sourceDirectory>src</sourceDirectory>
 		<plugins>
 			<plugin>
 				<artifactId>maven-compiler-plugin</artifactId>
@@ -17,6 +16,27 @@
 					<source>1.8</source>
 					<target>1.8</target>
 				</configuration>
+			</plugin>
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-shade-plugin</artifactId>
+				<version>3.2.1</version>
+				<executions>
+					<execution>
+						<phase>package</phase>
+						<goals>
+							<goal>shade</goal>
+						</goals>
+						<configuration>
+							<relocations>
+								<relocation>
+									<pattern>de.tr7zw.changeme.nbtapi</pattern>
+									<shadedPattern>com.dreamless.nbtapi</shadedPattern>
+								</relocation>
+							</relocations>
+						</configuration>
+					</execution>
+				</executions>
 			</plugin>
 		</plugins>
 	</build>
@@ -37,34 +57,20 @@
 			<id>vault-repo</id>
 			<url>http://nexus.hc.to/content/repositories/pub_releases</url>
 		</repository>
-		<repository>
-			<id>filoghost-repo</id>
-			<url>https://ci.filoghost.me/plugin/repository/everything/</url>
-		</repository>
-		<repository>
-			<id>jitpack.io</id>
-			<url>https://jitpack.io</url>
-		</repository>
 	</repositories>
 	<dependencies>
 		<dependency>
 			<groupId>org.spigotmc</groupId>
 			<artifactId>spigot-api</artifactId>
-			<version>1.15-R0.1-SNAPSHOT</version><!--change this value depending 
+			<version>1.15.2-R0.1-SNAPSHOT</version><!--change this value depending 
 				on the version -->
 			<type>jar</type>
 			<scope>provided</scope>
 		</dependency>
 		<dependency>
-			<groupId>com.github.dreamlessmemory</groupId>
-			<artifactId>LaithornsGrace</artifactId>
-			<version>master-SNAPSHOT</version>
-			<exclusions>
-	    		<exclusion>
-	    			<groupId>de.tr7zw</groupId>
-	    			<artifactId>item-nbt-api</artifactId>
-	    		</exclusion>
-	    	</exclusions>
+	    	<groupId>com.dreamless.LaithornsGrace</groupId>
+	    	<artifactId>LaithornsGrace</artifactId>
+	    	<version>2.0.0-SNAPSHOT</version>
 		</dependency>
 	</dependencies>
 </project>
