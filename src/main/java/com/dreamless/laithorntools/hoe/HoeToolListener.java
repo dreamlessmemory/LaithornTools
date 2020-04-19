@@ -133,6 +133,7 @@ public class HoeToolListener implements Listener {
 			return ((Ageable)block.getBlockData()).getAge() == 7;
 		case BEETROOTS:
 		case NETHER_WART:
+		case SWEET_BERRY_BUSH:
 			return ((Ageable)block.getBlockData()).getAge() == 3;
 		default:
 			return false;
@@ -164,6 +165,8 @@ public class HoeToolListener implements Listener {
 			return Material.CARROT;
 		case NETHER_WART:
 			return Material.NETHER_WART;
+		case SWEET_BERRY_BUSH:
+			return Material.SWEET_BERRIES;
 		default:
 			return null;
 		}
@@ -202,6 +205,7 @@ public class HoeToolListener implements Listener {
 				return boosted ? 4 : 0;
 			case NETHER_WART:
 			case BEETROOTS:
+			case SWEET_BERRY_BUSH:
 				return boosted ? 2 : 0;
 			default:
 				return 0;
