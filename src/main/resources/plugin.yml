@@ -1,5 +1,5 @@
 name: LaithornTools
-version: 0.0.1
+version: 1.1.0
 description: Create special tools with laithorn properties
 main: com.dreamless.laithorntools.LaithornTools
 api-version: 1.16
