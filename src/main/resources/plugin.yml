@@ -5,7 +5,7 @@ main: com.dreamless.laithorntools.LaithornTools
 api-version: 1.16
 authors: [DreamlessMemory/MemoryReborn]
 prefix: LaithornTools
-depend: [LaithornsGrace, NBTAPI]
+depend: [LaithornsGrace]
 commands:
   TreeTool:
     description: Command for Administration
