@@ -19,7 +19,7 @@ public class LaithornTools extends JavaPlugin{
 	public static boolean development;
 	
 	//Language
-	public LanguageReader languageReader;
+	public com.dreamless.laithorn.LanguageReader languageReader;
 	
 	@Override
 	public void onEnable() {
@@ -100,7 +100,7 @@ public class LaithornTools extends JavaPlugin{
 			return false;
 		}
 		
-		LanguageReader.loadEntries(currentFile);
+		com.dreamless.laithorn.LanguageReader.loadEntries(currentFile);
 		
 		HoeToolRecipe.registerRecipes(currentConfig);
 		HoeToolRecipe.setUseCostAndExpGain(currentConfig);

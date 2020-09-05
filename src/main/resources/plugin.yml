@@ -2,10 +2,10 @@ name: LaithornTools
 version: 0.0.1
 description: Create special tools with laithorn properties
 main: com.dreamless.laithorntools.LaithornTools
-api-version: 1.13
+api-version: 1.16
 authors: [DreamlessMemory/MemoryReborn]
 prefix: LaithornTools
-depend: [LaithornsGrace]
+depend: [LaithornsGrace, NBTAPI]
 commands:
   TreeTool:
     description: Command for Administration

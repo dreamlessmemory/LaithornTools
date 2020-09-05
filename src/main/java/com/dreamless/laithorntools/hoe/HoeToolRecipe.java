@@ -14,7 +14,6 @@ import com.dreamless.laithorn.api.RecipeType;
 import com.dreamless.laithorntools.LaithornTools;
 import de.tr7zw.changeme.nbtapi.NBTCompound;
 import de.tr7zw.changeme.nbtapi.NBTItem;
-import com.dreamless.laithorntools.LanguageReader;
 
 public class HoeToolRecipe {
 
@@ -105,8 +104,8 @@ public class HoeToolRecipe {
 		ItemMeta itemMeta = item.getItemMeta();
 
 		// ItemMeta
-		itemMeta.setDisplayName(LanguageReader.getText(material.name() + "_Name"));
-		itemMeta.setLore(LaithornUtils.wrapText(LanguageReader.getText(material.name() + "_Text")));
+		itemMeta.setDisplayName(com.dreamless.laithorn.LanguageReader.getText(material.name() + "_Name"));
+		itemMeta.setLore(LaithornUtils.wrapText(com.dreamless.laithorn.LanguageReader.getText(material.name() + "_Text")));
 		item.setItemMeta(itemMeta);
 
 		// NBT
