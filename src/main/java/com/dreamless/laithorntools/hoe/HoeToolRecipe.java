@@ -74,7 +74,7 @@ public class HoeToolRecipe {
 		
 		// Diamond
 		LaithornRegister.registerItemRepair(Material.DIAMOND_HOE, currentConfig.getInt("DIAMOND_HOE_create_level", 20),
-				currentConfig.getInt("DIAMOND_HOE_repair_exp", 3), currentConfig.getInt("IRON_HOE_repair_rate", 20), true, null);
+				currentConfig.getInt("DIAMOND_HOE_repair_exp", 3), currentConfig.getInt("DIAMOND_HOE_repair_rate", 20), true, null);
 	}
 	
 	public static void setUseCostAndExpGain(FileConfiguration currentConfig) {
