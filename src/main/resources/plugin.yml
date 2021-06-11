@@ -1,8 +1,8 @@
 name: LaithornTools
-version: 1.1.2
+version: 1.2.0
 description: Create special tools with laithorn properties
 main: com.dreamless.laithorntools.LaithornTools
-api-version: 1.16
+api-version: 1.17
 authors: [DreamlessMemory/MemoryReborn]
 prefix: LaithornTools
 depend: [LaithornsGrace]
@@ -12,6 +12,6 @@ commands:
     aliases: [treetool, trtool]
 permissions:
   treetool.admin:
-    description: All permissions related to setup of TreeWarp
+    description: All permissions related to setup of Laithorn Tools
   treetool.user:
-    description: Allows for the creation of leaves and use of warps
+    description: Allows for the creation and use of Laithorn Tools
