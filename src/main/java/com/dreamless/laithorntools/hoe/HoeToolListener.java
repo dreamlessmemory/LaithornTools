@@ -26,8 +26,8 @@ import com.dreamless.laithorn.api.Fragment;
 import com.dreamless.laithorn.events.PlayerExperienceGainEvent;
 import com.dreamless.laithorntools.LaithornTools;
 import com.dreamless.laithorn.events.PlayerExperienceVariables.GainType;
-import de.tr7zw.changeme.nbtapi.NBTCompound;
-import de.tr7zw.changeme.nbtapi.NBTItem;
+import com.dreamless.nbtapi.NBTCompound;
+import com.dreamless.nbtapi.NBTItem;
 
 public class HoeToolListener implements Listener {
 
