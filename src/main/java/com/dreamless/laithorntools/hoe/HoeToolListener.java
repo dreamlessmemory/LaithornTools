@@ -73,7 +73,7 @@ public class HoeToolListener implements Listener {
 
 		// EXP gain
 		Bukkit.getPluginManager().callEvent(new PlayerExperienceGainEvent(player,
-				HoeToolRecipe.toolUseExpMap.get(item.getType()), GainType.ATTUNEMENT, false));
+				HoeToolRecipe.toolUseExpMap.get(item.getType()), 0, GainType.ATTUNEMENT, false));
 
 	}
 
