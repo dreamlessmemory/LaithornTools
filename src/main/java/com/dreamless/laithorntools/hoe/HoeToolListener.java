@@ -66,7 +66,7 @@ public class HoeToolListener implements Listener {
 		// Alter drops
 		event.setDropItems(false);
 		for (ItemStack drop : alterDrops(block.getDrops(item), block, item.getType())) {
-			if (drop.getAmount() > 1) {
+			if (drop.getAmount() >= 1) {
 				block.getWorld().dropItemNaturally(block.getLocation(), drop);
 			}
 		}
