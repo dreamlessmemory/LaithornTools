@@ -1,8 +1,8 @@
 name: LaithornTools
-version: 1.3.0
+version: 1.3.1
 description: Create special tools with laithorn properties
 main: com.dreamless.laithorntools.LaithornTools
-api-version: 1.18
+api-version: 1.19
 authors: [DreamlessMemory/MemoryReborn]
 prefix: LaithornTools
 depend: [LaithornsGrace]
